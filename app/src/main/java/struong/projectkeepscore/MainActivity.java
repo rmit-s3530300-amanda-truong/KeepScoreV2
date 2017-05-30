@@ -1,5 +1,7 @@
 package struong.projectkeepscore;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -22,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
 
     private int intScore;
     private int intScore2;
+    private String name_p1 = null;
+    private String name_p2 = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +42,20 @@ public class MainActivity extends AppCompatActivity {
         tfReason = (EditText)findViewById(R.id.tfReason);
         etName = (EditText) findViewById(R.id.etName);
         etName2 = (EditText) findViewById(R.id.etName2);
+
+        //try to get it to retrieve the name from previous run
+        /*if(name_p1 == null)
+        {
+            etName.setText(getName1(this));
+        }
+        if(name_p2 == null)
+        {
+            etName.setText(getName2(this));
+        }*/
+
+        name_p1 = etName.getText().toString();
+        name_p2 = etName.getText().toString();
+        setName(this,name_p1,name_p2);
 
         bPlus.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,5 +94,27 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    public void setName(Context context, String name1, String name2)
+    {
+        //trialing shared preferences to save name after close
+        SharedPreferences pref = context.getSharedPreferences("myAppPackage",0);
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putString("name1",name1);
+        editor.putString("name2",name2);
+        //consider using apply() look into this!!!
+        editor.commit();
+    }
+
+    public String getName1(Context context)
+    {
+        SharedPreferences pref = context.getSharedPreferences("myAppPackage",0);
+        return pref.getString("name1","");
+    }
+
+    public String getName2(Context context)
+    {
+        SharedPreferences pref = context.getSharedPreferences("myAppPackage",0);
+        return pref.getString("name2","");
+    }
 
 }
