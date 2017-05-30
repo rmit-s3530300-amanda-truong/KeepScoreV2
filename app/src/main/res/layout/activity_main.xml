@@ -9,8 +9,113 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="struong.projectkeepscore.MainActivity">
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/ok"
+        android:id="@+id/bSubmit"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="97dp" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:text="@string/score"
+        android:id="@+id/score"
+        android:layout_marginBottom="61dp"
+        android:textSize="40sp"
+        android:layout_above="@+id/score2"
+        android:layout_alignLeft="@+id/score2"
+        android:layout_alignStart="@+id/score2" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/plus"
+        android:id="@+id/bPlus"
+        android:layout_alignTop="@+id/score"
+        android:layout_toLeftOf="@+id/bSubmit" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/minus"
+        android:id="@+id/bMinus"
+        android:layout_alignTop="@+id/score"
+        android:layout_toRightOf="@+id/bSubmit"
+        android:layout_toEndOf="@+id/bSubmit" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tfReason"
+        android:hint="@string/hintReason"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="45dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title"
+        android:id="@+id/tvTitle"
+        android:textSize="40sp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/score"
+        android:id="@+id/score2"
+        android:layout_above="@+id/bSubmit"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="35dp"
+        android:textSize="40sp" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/plus"
+        android:id="@+id/bPlus2"
+        android:layout_alignBottom="@+id/score2"
+        android:layout_toLeftOf="@+id/bSubmit"
+        android:layout_toStartOf="@+id/bSubmit" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/minus"
+        android:id="@+id/bMinus2"
+        android:layout_alignTop="@+id/bPlus2"
+        android:layout_alignLeft="@+id/bMinus"
+        android:layout_alignStart="@+id/bMinus" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="@string/name"
+        android:ems="10"
+        android:id="@+id/etName"
+        android:layout_above="@+id/score"
+        android:layout_alignLeft="@+id/tvTitle"
+        android:layout_alignStart="@+id/tvTitle" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="@string/name"
+        android:ems="10"
+        android:id="@+id/etName2"
+        android:layout_above="@+id/score2"
+        android:layout_alignLeft="@+id/etName"
+        android:layout_alignStart="@+id/etName" />
+
 </RelativeLayout>

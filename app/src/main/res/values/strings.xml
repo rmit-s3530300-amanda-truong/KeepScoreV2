@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">ProjectKeepScore</string>
+    <string name="ok">OK</string>
+    <string name="score">0</string>
+    <string name="plus">+1</string>
+    <string name="minus">-1</string>
+    <string name="title">Keep Score</string>
+    <string name="hintReason">OPTIONAL: Note</string>
+    <string name="name">Name</string>
 </resources>
