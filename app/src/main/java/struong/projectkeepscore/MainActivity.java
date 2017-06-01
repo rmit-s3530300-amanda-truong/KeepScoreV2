@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -43,19 +44,22 @@ public class MainActivity extends AppCompatActivity {
         etName = (EditText) findViewById(R.id.etName);
         etName2 = (EditText) findViewById(R.id.etName2);
 
-        //try to get it to retrieve the name from previous run
-        /*if(name_p1 == null)
-        {
-            etName.setText(getName1(this));
-        }
-        if(name_p2 == null)
-        {
-            etName.setText(getName2(this));
-        }*/
+        //second paramater means what it will return if the first parameter key is not found
+        SharedPreferences pref = getSharedPreferences("nameInfo", Context.MODE_PRIVATE);
+        name_p1 = pref.getString("name1","");
+        name_p2 = pref.getString("name2","");
+        etName.setText(name_p1);
+        etName2.setText(name_p2);
 
-        name_p1 = etName.getText().toString();
-        name_p2 = etName.getText().toString();
-        setName(this,name_p1,name_p2);
+        bSubmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(etName.getText().length()>0)
+                {
+                    saveNames();
+                }
+            }
+        });
 
         bPlus.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,27 +98,14 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void setName(Context context, String name1, String name2)
+    public void saveNames()
     {
-        //trialing shared preferences to save name after close
-        SharedPreferences pref = context.getSharedPreferences("myAppPackage",0);
+        SharedPreferences pref = getSharedPreferences("nameInfo", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = pref.edit();
-        editor.putString("name1",name1);
-        editor.putString("name2",name2);
-        //consider using apply() look into this!!!
-        editor.commit();
-    }
+        editor.putString("name1",etName.getText().toString());
+        editor.putString("name2",etName2.getText().toString());
+        editor.apply();
 
-    public String getName1(Context context)
-    {
-        SharedPreferences pref = context.getSharedPreferences("myAppPackage",0);
-        return pref.getString("name1","");
+        Toast.makeText(this, "Saved", Toast.LENGTH_LONG).show();
     }
-
-    public String getName2(Context context)
-    {
-        SharedPreferences pref = context.getSharedPreferences("myAppPackage",0);
-        return pref.getString("name2","");
-    }
-
 }
